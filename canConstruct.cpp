@@ -50,3 +50,5 @@ int canConstruct(std::string target, std::string wordBank[50], int n)
     m[target] = 0;
     return 0;
 }
+
+// Time : O(n*m^2)
