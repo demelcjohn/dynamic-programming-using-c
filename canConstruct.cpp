@@ -7,19 +7,19 @@
 
 #include <iostream>
 #include <string.h>
-// #include <map>
+#include <map>
 
 using namespace std;
 
-// std::map<int, int> m;
+std::map<std::string, int> m;
 
 int canConstruct(std::string target, std::string wordBank[50], int n);
 
 int main()
 {
     int v;
-    std::string target = "skateboard";
-    std::string wordBank[50] = {"bo", "rd", "ate", "t", "ska", "sk", "boar"};
+    std::string target = "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef";
+    std::string wordBank[50] = {"e", "ee", "eee", "eeee", "eeeee", "eeeeee", "boar"};
     int n = 7;
     v = canConstruct(target, wordBank, n);
     std::cout << v << std::endl;
@@ -29,6 +29,8 @@ int main()
 int canConstruct(std::string target, std::string wordBank[50], int n)
 {
     std::string suffix;
+    if (m.find(target) != m.end())
+        return m[target];
     if (target == "")
     {
         return 1;
@@ -40,9 +42,11 @@ int canConstruct(std::string target, std::string wordBank[50], int n)
             suffix = target.substr(wordBank[i].length());
             if (canConstruct(suffix, wordBank, n) == 1)
             {
-                return 1;
+                m[target] = 1;
+                return m[target];
             }
         }
     }
+    m[target] = 0;
     return 0;
 }
