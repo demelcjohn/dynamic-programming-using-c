@@ -12,7 +12,7 @@ using namespace std;
 
 std::map<std::string, int> m;
 
-int canConstruct(std::string target, std::string wordBank[50], int n);
+int countConstruct(std::string target, std::string wordBank[50], int n);
 
 int main()
 {
@@ -20,12 +20,12 @@ int main()
     std::string target = "enterapotentpot";
     std::string wordBank[50] = {"a", "p", "ent", "enter", "ot", "o", "t"};
     int n = 7;
-    v = canConstruct(target, wordBank, n);
+    v = countConstruct(target, wordBank, n);
     std::cout << v << std::endl;
     return 0;
 }
 
-int canConstruct(std::string target, std::string wordBank[50], int n)
+int countConstruct(std::string target, std::string wordBank[50], int n)
 {
     std::string suffix;
     int totalCount = 0, numWaysForRest;
@@ -40,7 +40,7 @@ int canConstruct(std::string target, std::string wordBank[50], int n)
         if (target.find(wordBank[i]) == 0)
         {
             suffix = target.substr(wordBank[i].length());
-            numWaysForRest = canConstruct(suffix, wordBank, n);
+            numWaysForRest = countConstruct(suffix, wordBank, n);
             totalCount += numWaysForRest;
         }
     }
