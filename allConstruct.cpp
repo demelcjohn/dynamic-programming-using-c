@@ -53,7 +53,7 @@ vector<vector<std::string>> allConstruct(std::string target, std::string wordBan
         {
             suffix = target.substr(wordBank[i].length());
             suffixWays = allConstruct(suffix, wordBank, n);
-            targetWays = suffixWays.push_back();
+            targetWays.insert(targetWays.end(), suffixWays.end(), suffixWays.begin());
             result.insert(result.end(), targetWays.begin(), targetWays.end());
         }
     }
